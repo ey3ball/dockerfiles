@@ -5,12 +5,9 @@ RUN sed -i 's/restricted$/restricted multiverse/' /etc/apt/sources.list && \
 
 RUN apt-get install -qy ${NZBGET_BUILDDEPS}
 RUN apt-get install -qy ${NZBGET_RUNDEPS}
-RUN apt-get install -qy rsync
+RUN apt-get install -qy wget
 
-RUN apt-get install -qy wget && \
-        wget -q http://sourceforge.net/projects/nzbget/files/${NZBGET_FILE}.tar.gz \
-        -O /tmp/nzbget.tar.gz && \
-        apt-get purge -qy wget
+RUN wget -q http://sourceforge.net/projects/nzbget/files/${NZBGET_FILE}.tar.gz -O /tmp/nzbget.tar.gz
 
 WORKDIR /tmp
 RUN tar xvf nzbget.tar.gz && \
@@ -23,7 +20,7 @@ RUN ./configure --prefix=/usr
 RUN make -j$(nproc)
 
 VOLUME [ "/build" ]
-ENTRYPOINT make DESTDIR=/build install
+ENTRYPOINT rm -rf /build/usr && make DESTDIR=/build install
 
 #
 # RUN make install
