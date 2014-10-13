@@ -7,6 +7,10 @@ RUN sed -i 's/restricted$/restricted multiverse/' /etc/apt/sources.list && \
         rm -rf /var/lib/apt/lists/*
 
 ADD build/ /
+ADD nzbget-entry.sh /usr/bin/nzbget-entry.sh
 
-VOLUME ["/data"]
+VOLUME ["/nzbget"]
 EXPOSE 6789
+
+CMD [ "--server" ]
+ENTRYPOINT ["/usr/bin/nzbget-entry.sh"]
