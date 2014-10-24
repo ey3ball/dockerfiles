@@ -1,0 +1,1 @@
+Simple dockerfile for proftpd
