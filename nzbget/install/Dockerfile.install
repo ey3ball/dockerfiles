@@ -1,4 +1,4 @@
-FROM ey3ball/nzbget-env:latest
+FROM ey3ball/nzbget-env:%TARGET%
 
 RUN sed -i 's/restricted$/restricted multiverse/' /etc/apt/sources.list && \
         apt-get update -q && \
