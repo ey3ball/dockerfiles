@@ -2,7 +2,7 @@ FROM ubuntu:latest
 MAINTAINER florian@ey3ball.net
 
 RUN apt-get update && \
-        apt-get install -y proftpd && \
+        apt-get install -y proftpd proftpd-mod-vroot && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* && \
         sed -i -e 's/# PassivePorts.*/PassivePorts 6000 6010/g' /etc/proftpd/proftpd.conf
