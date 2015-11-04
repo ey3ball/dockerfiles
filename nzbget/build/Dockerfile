@@ -7,7 +7,7 @@ RUN apt-get install -qy ${NZBGET_BUILDDEPS}
 RUN apt-get install -qy ${NZBGET_RUNDEPS}
 RUN apt-get install -qy wget
 
-RUN wget -q http://sourceforge.net/projects/nzbget/files/${NZBGET_FILE}.tar.gz -O /tmp/nzbget.tar.gz
+RUN wget -q ${NZBGET_PACK} -O /tmp/nzbget.tar.gz
 
 WORKDIR /tmp
 RUN tar xvf nzbget.tar.gz && \

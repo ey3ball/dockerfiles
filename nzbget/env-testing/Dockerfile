@@ -1,10 +1,11 @@
 FROM ubuntu:latest
 
-ENV VERSION 15.0
+ENV VERSION 17.0
 ENV REVISION 1265
 
 ENV NZBGET_FILE nzbget-${VERSION}-testing-r${REVISION}
-ENV NZBGET_EXTDIR nzbget-${VERSION}-testing
+ENV NZBGET_EXTDIR nzbget-develop
+ENV NZBGET_PACK https://github.com/nzbget/nzbget/archive/develop.tar.gz
 
 ENV NZBGET_BUILDDEPS build-essential pkg-config  libxml2-dev libncurses5-dev \
                         libsigc++-2.0-dev libssl-dev

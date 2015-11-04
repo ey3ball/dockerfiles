@@ -42,5 +42,5 @@ $(WORKDIR): .nzbget-target
 	@touch .nzbget-env-stable
 
 clean:
-	docker rmi ey3ball/nzbget:testing ey3ball/nzbget-build:latest \
+	docker rmi ey3ball/nzbget-build:latest ey3ball/nzbget-build:stable \
 		ey3ball/nzbget-env:latest ey3ball/nzget-env:stable
