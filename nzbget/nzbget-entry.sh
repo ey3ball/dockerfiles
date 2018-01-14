@@ -6,7 +6,7 @@ set -e
 [ ! -d /nzget/data ] && mkdir -p /nzbget/data
 
 function gen_conf {
-  cat /usr/share/nzbget/nzbget.conf | \
+  cat /opt/nzbget/webui/nzbget.conf.template | \
         sed 's|MainDir=.*|MainDir=/nzbget/conf|g' | \
         sed 's|DestDir=.*|DestDir=/nzbget/data/incoming|g' | \
         sed 's|InterDir=.*||g' | \
@@ -27,11 +27,11 @@ if [ ! -f /nzbget/conf/nzbget.conf ]; then
   gen_conf > /nzbget/conf/nzbget.conf
 fi
 
-if [ /usr/share/nzbget/nzbget.conf -nt /nzbget/conf/nzbget.conf ]; then
+if [ /opt/nzbget/webui/nzbget.conf.template -nt /nzbget/conf/nzbget.conf ]; then
   echo "WARNING: your config file is older than nzbget's defaults" >&2
   echo "         new config file stored as nzbget.conf.new" >&2
 
   gen_conf > /nzbget/conf/nzbget.conf.new
 fi
 
-nzbget --configfile /nzbget/conf/nzbget.conf $@
+/opt/nzbget/nzbget --configfile /nzbget/conf/nzbget.conf $@
