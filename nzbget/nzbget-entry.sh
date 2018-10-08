@@ -2,8 +2,8 @@
 
 set -e
 
-[ ! -d /nzget/conf ] && mkdir -p /nzbget/conf
-[ ! -d /nzget/data ] && mkdir -p /nzbget/data
+[ ! -d /nzbget/conf ] && mkdir -p /nzbget/conf
+[ ! -d /nzbget/data ] && mkdir -p /nzbget/data
 
 function gen_conf {
   cat /opt/nzbget/webui/nzbget.conf.template | \
